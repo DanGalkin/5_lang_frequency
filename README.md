@@ -1,6 +1,6 @@
 # Frequency Analysis of Words
 
-[TODO. There will be project description]
+The program gets the path to a text file, and print 10  most frequent words.
 
 # Project Goals
 
