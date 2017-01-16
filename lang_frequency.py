@@ -19,7 +19,8 @@ def get_most_frequent_words(text):
 
 
 def clear_text_from_punctuation(text):
-    punctuation_list = list('1234567890!@#$%^&*(){}[];:",./<>?~_=|`\u2014\u002D\u005C\u0027')
+    punctuation_list = \
+        list('1234567890!@#$%^&*(){}[];:",./<>?~-_=|`\u2014\u005C\u0027')
     for item in punctuation_list:
         text = text.lower().replace(item, '')
     return text
@@ -28,4 +29,3 @@ def clear_text_from_punctuation(text):
 if __name__ == '__main__':
     filepath = str(input('Введите путь до текстового файла:'))
     get_most_frequent_words(clear_text_from_punctuation(load_data(filepath)))
-    
