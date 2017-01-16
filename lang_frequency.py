@@ -28,3 +28,4 @@ def clear_text_from_punctuation(text):
 if __name__ == '__main__':
     filepath = str(input('Введите путь до текстового файла:'))
     get_most_frequent_words(clear_text_from_punctuation(load_data(filepath)))
+    
