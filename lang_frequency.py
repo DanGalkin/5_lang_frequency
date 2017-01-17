@@ -1,5 +1,5 @@
 import operator
-
+from collections import Counter
 
 def load_data(filepath):
     with open(filepath, encoding='utf-8') as text_file:
@@ -7,25 +7,12 @@ def load_data(filepath):
 
 
 def get_most_frequent_words(text):
-    words_list = text.split()
-    words_count = {}
-    for item in words_list:
-        words_count[item] = words_list.count(item)
-    top_words_count = sorted(words_count.items(), key=operator.itemgetter(1),
-                             reverse=True)[:10]
-    print('Самые частые слова')
-    for item in top_words_count:
-        print('%s встречается %s раз(а)' % (item[0], item[1]))
-
-
-def clear_text_from_punctuation(text):
-    punctuation_list = \
-        list('1234567890!@#$%^&*(){}[];:",./<>?~-_=|`\u2014\u005C\u0027')
-    for item in punctuation_list:
-        text = text.lower().replace(item, '')
-    return text
+    words_list = re.findall('\w+', text.lower())
+    return Counter(words_list).most_common(10)
 
 
 if __name__ == '__main__':
     filepath = str(input('Введите путь до текстового файла:'))
-    get_most_frequent_words(clear_text_from_punctuation(load_data(filepath)))
+    top_words_count = get_most_frequent_words(load_data(filepath))
+    for item in top_words_count:
+        print('%s встречается %s раз(а)' % (item[0], item[1]))
